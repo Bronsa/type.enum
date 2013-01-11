@@ -48,7 +48,7 @@
   {:pre [(every? #(or (keyword? %)
                       (integer? %)) args)]}
   (if (every? keyword? args)
-    (enum* (apply hash-map (interleave args (iterate inc 0))))
+    (enum* (apply hash-map (interleave args (range))))
     (if (and (even? (count args))
              (every? keyword? (take-nth 2 args))
              (every? integer? (take-nth 2 (rest args))))
